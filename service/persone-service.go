@@ -24,8 +24,8 @@ func init() {
 	}
 
 	people = append(people, model.Person{Name: "name", Email: "email@e.com", City: "city", Mac: "08:ub:22:t6", Creditcard: "1555-9999-8521-8477"})
-	people = append(people, model.Person{Name: "name", Email: "email@e.com", City: "city", Mac: "08:ub:22:t6", Creditcard: "1555-9999-8521-84377"})
-	people = append(people, model.Person{Name: "name", Email: "email@e.com", City: "city", Mac: "08:ub:22:t6", Creditcard: "1555-9999-8521-84477"})
+	people = append(people, model.Person{Name: "name", Email: "email1@e.com", City: "city", Mac: "08:ub:22:t6", Creditcard: "1555-9999-8521-84377"})
+	people = append(people, model.Person{Name: "name", Email: "email2@e.com", City: "city", Mac: "08:ub:22:t6", Creditcard: "1555-9999-8521-84477"})
 	// Create a write transaction
 	txn := DB.Txn(true)
 

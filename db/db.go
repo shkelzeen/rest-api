@@ -11,7 +11,7 @@ func InitDB() (*memdb.MemDB, error) { // Create the DB schema
 					"id": &memdb.IndexSchema{
 						Name:    "id",
 						Unique:  true,
-						Indexer: &memdb.StringFieldIndex{Field: "ID"},
+						Indexer: &memdb.StringFieldIndex{Field: "Email"},
 					},
 				},
 			},
