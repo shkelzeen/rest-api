@@ -14,6 +14,7 @@ import (
 // DB - Global DB var
 var DB *memdb.MemDB
 
+// Init methode to save some users into database and set the datasourc
 func init() {
 
 	var err error
@@ -21,10 +22,10 @@ func init() {
 	if err != nil {
 
 	}
-	people = append(people, model.Person{ID: "1", Firstname: "John", Lastname: "Doe"})
-	people = append(people, model.Person{ID: "2", Firstname: "Koko", Lastname: "Doe"})
-	people = append(people, model.Person{ID: "3", Firstname: "Francis", Lastname: "Sunday"})
 
+	people = append(people, model.Person{Name: "name", Email: "email@e.com", City: "city", Mac: "08:ub:22:t6", Creditcard: "1555-9999-8521-8477"})
+	people = append(people, model.Person{Name: "name", Email: "email@e.com", City: "city", Mac: "08:ub:22:t6", Creditcard: "1555-9999-8521-84377"})
+	people = append(people, model.Person{Name: "name", Email: "email@e.com", City: "city", Mac: "08:ub:22:t6", Creditcard: "1555-9999-8521-84477"})
 	// Create a write transaction
 	txn := DB.Txn(true)
 
@@ -43,6 +44,7 @@ func init() {
 
 }
 
+// Get all  data from database
 func GetPeople(w http.ResponseWriter, r *http.Request) {
 
 	// Create read-only transaction
@@ -70,6 +72,8 @@ func GetPeople(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
+
+//Get one Person from saved one into database
 func GetPerson(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 
@@ -87,6 +91,8 @@ func GetPerson(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(raw.(model.Person))
 	}
 }
+
+//Create Person and saved into db
 func CreatePerson(w http.ResponseWriter, r *http.Request) {
 	// Create a write transaction
 	txn := DB.Txn(true)
@@ -106,22 +112,10 @@ func CreatePerson(w http.ResponseWriter, r *http.Request) {
 	// Commit the transaction
 	txn.Commit()
 }
+
+//Delete methode not implementded as is wasn't asked
 func DeletePerson(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-
-	txn := DB.Txn(true)
-	defer txn.Abort()
-
-	// Lookup by email
-	var id string
-	id = params["id"]
-	var result int
-
-	err := txn.DeleteAll("person", "id", id)
-	if err != nil {
-		panic(err)
-	}
-	//log.Println(result)
+	return
 }
 
 var people []model.Person

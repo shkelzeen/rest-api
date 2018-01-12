@@ -1,8 +1,10 @@
 package model
 
 type Person struct {
-	ID        string   `json:"id,omitempty"`
-	Firstname string   `json:"firstname,omitempty"`
-	Lastname  string   `json:"lastname,omitempty"`
-	Address   *Address `json:"address,omitempty"`
+	Name       string `json:"name,omitempty"`
+	Email      string `json:"email,omitempty"`
+	City       string `json:"city,omitempty"`
+	Mac        string `json:"mac,omitempty"`
+	Timestamp  string `json:"timestamp,omitempty"`
+	Creditcard string `json:"creditcard,omitempty"`
 }
